@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../test.css">
+	<style type="text/css">
+		.item{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.relative{
+			position: relative;
+
+			z-index: 501;
+		}
+		.absolute{
+			position: absolute;
+			top: 150px;
+			left: 150px;
+			z-index: 1000;
+			background-color: red;
+		}
+		.static{
+			background-color: yellow;
+		}
+		.floats .item{
+			float: left;
+			
+			z-index: 500;
+		}
+
+	</style>
+</head>
+<body>
+<div>
+	<div class="relative">
+		<div class="relative item">
+			<div class="absolute item"></div>
+		</div>
+	</div>
+</div>
+<div class="floats">
+	<div class="relative zindex static item">
+	</div>
+	<div class="relative item">
+	</div>
+	<div class="relative item">
+	</div>
+	<div class="relative item">
+	</div>
+</div>
+<div class="comment">
+	<h3 class="title">小结：</h3>
+	<div>
+		<h4>ie6,7对relative和absolute解析和其它浏览器不一样</h4>
+		<ol class="des">
+		</ol>
+	</div>
+</div>
+</body>
+</html>

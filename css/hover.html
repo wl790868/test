@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../test.css">
+	<style type="text/css">
+		.item{
+			background: #ccc;
+			display: block;
+			height: 100px;
+			margin-bottom: 15px;
+		}
+		.item:hover{
+			background: #999;
+		}
+		
+		.item:hover .child{
+			background: green;
+			height: 20px;
+		}
+
+		.a:hover{
+			color: red;
+		}
+		.a:hover span{
+			color: green;
+		}
+
+		.selected-item{
+		    border-radius: 3px;
+		    color: #fff;
+		    padding: 0 20px 0 5px;
+		    margin-right: 10px;
+		    background-color: #262626;
+		    position: relative;
+		    z-index: 2;
+		    line-height: 22px;
+		    display: inline-block;
+		    text-decoration: none;
+		}
+		.selected-item .btn-X{
+		    width: 11px;
+		    height: 11px;
+		    position: absolute;
+		    overflow: hidden;
+		    top: 50%;
+		    right: 4px;
+		    margin-top: -5px;
+		    z-index: 3;
+		    background-repeat: no-repeat;
+		    background-image: url(http://img02.taobaocdn.com/tps/i2/T11MZrXlxcXXacdmY0-45-100.png);
+		    background-image: -webkit-image-set(url(http://img02.taobaocdn.com/tps/i2/T11MZrXlxcXXacdmY0-45-100.png) 1x,url(http://img04.taobaocdn.com/tps/i4/T1AOoCXllfXXblbWg9-90-200.png) 2x);
+		    background-color: #262626;
+		    background-position: -33px -88px;
+		    text-indent: -9999px;
+		}
+		.selected-item:hover{
+		    color: red;
+		}
+		.selected-item:hover .btn-X{
+		    background-position: 0 -89px;
+		}
+	</style>
+</head>
+<body>
+	<div href="#" class="item">
+		<div class="child">
+		</div>
+	</div>
+	<a href="#" class="item">
+		<div class="child">
+		</div>
+	</a>
+	<a href="#" class="a">测试hover<span class="child">ing</span></a>
+
+	<!--srp页测试-->
+	<a class="selected-item" href="#">雷柯特<span class="btn-X">aaa</span></a>
+
+	<div class="comment">
+		<h3 class="title">小结：</h3>
+		<div>
+			<h4>css hover生效条件</h4>
+			<ol class="des">
+				<li>chrome ,ie7及以上浏览器：不管a标签还是其它标签均可生效</li>
+				<li>ie6：只有带href属性的a标签可以</li>
+				<li>
+					ie6：想定义带href属性的a标签hover时，字节点的样式，必须先定义 a标签:hover 样式。比如：
+					<div class="pre no">
+/*直接这样是不行的*/
+.selected-item:hover .btn-X{
+	color: green;
+}
+					</div>
+					<div class="pre yes">
+/*要这样*/
+<b>.selected-item:hover{
+	color:red;
+}</b>
+.selected-item:hover .btn-X{
+	color: green;
+}
+					</div>
+				</li>
+			</ol>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	p{
+		margin: 0;
+	}
+
+	/*inline-block,block 兼容ie6,7：ie6,7：添加中间层，外层relative,中间层absolute top50% left50%,内层relative top-50% left-50%*/
+	.pic{
+		border: 1px solid #eee;
+		padding: 5px;
+
+		width: 230px;
+		height: 230px;
+		line-height: 230px;
+		font-size: 0;
+		text-align: center;
+
+		*position: relative;
+	}
+	.pic .pic-box{
+		*position: absolute;
+		*top: 50%;
+		*left: 50%;
+	}
+	.pic .pic-box a{
+		display: inline-block;
+		*display: inline;
+		*zoom: 1;
+
+		*position: relative;
+		*top: -50%;
+		*left: -50%;
+	}
+	.pic .pic-box a img{
+		vertical-align: middle;
+	}
+
+	/*inline-block,block 多行文本 外层line-height 内层middle 不支持ie6,7*/
+	.mid-test{
+		background-color: yellow;
+		width: 200px;
+		height: 200px;
+		line-height: 200px;
+		text-align: center;
+		word-wrap: break-word;
+		font-size: 0px;
+		*position: relative;
+	}
+	.mid-test .mid-box{
+		*position: absolute;;
+		*top: 50%;
+		*left: 50%;
+	}
+	.mid-test .item{
+		background-color: green;
+		height: 100px;
+		width: 100px;
+		white-space: normal;
+		vertical-align: middle;
+		display: inline-block;
+		line-height: 12px;
+		font-size: 12px;
+		text-align: left;
+		*position: relative;
+		*top: -50%;
+		*left: -50%;
+	}
+
+	/*inline 单行文本垂直居中，line-height即可，ie6也支持*/
+	.line-h-test{
+		background-color: #eee;
+		word-wrap: break-word;
+		width: 200px;
+		height: 200px;
+		line-height: 200px;
+		text-align: center;
+	}
+	.line-h-test span{
+		background-color: green;
+	}
+
+	.tb-item{
+		width: 242px;
+	}
+	.tb-pic{
+		border: 1px solid #eee;
+		position: relative;
+		padding: 5px;
+		font-size: 0;
+	}
+	.tb-pic .pic-box{
+		position: relative;
+
+		/*高度和父元素宽度一样，等同于height:242px;*/
+		padding-bottom: 100%;
+		height: 0;
+
+		/*height: 242px;*/
+
+		overflow: hidden;
+	}
+	.tb-pic .s230{
+		width: 230px;
+		height: 230px;
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+		border: 0 none;
+
+		/*ie6,7下居然垂直居中，不懂啊。。。*/
+		*position: absolute;
+		*font-size: 205px;
+	}
+	.tb-pic img{
+		vertical-align: middle;
+	}
+	</style>
+</head>
+<body>
+<div class="pic">
+	<p class="pic-box">
+		<a><img src="http://g.search.alicdn.com/img/bao/uploaded/i4/i3/14888022609596775/T1zOquXuxaXXXXXXXX_!!0-item_pic.jpg_220x220.jpg" /></a>
+	</p>
+</div>
+
+<div class="mid-test">
+	<div class="mid-box">
+		<div class="item"><span>aaaaaaaaaaaaaaaaaaaaaaaa</span></div>
+	</div>
+</div>
+
+<div class="line-h-test">
+	<span>龙的传人</span>
+</div>
+
+<!-- 淘宝居中方式-->
+<div class="tb-item">
+	<div class="tb-pic">
+		<p class="pic-box">
+			<a trace="auction" tracenum="2" href="http://item.taobao.com/item.htm?id=20257011379&amp;ad_id=&amp;am_id=&amp;cm_id=140105335569ed55e27b&amp;pm_id=" class="s230" target="_blank">
+				<span>
+					<img src="http://g.search.alicdn.com/img/bao/uploaded/i4/i1/13541022454478256/T1t9erXDtcXXXXXXXX_!!0-item_pic.jpg_180x180.jpg"></span>
+			</a>
+		</p>
+	</div>
+</div>
+<!--淘宝居中方式 end-->
+</body>
+</html>

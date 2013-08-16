@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		function test(obj){
+			with(obj){
+				alert('in with: name=' + name);
+			}
+			alert('out with: name=' + name); //得不到with中name
+			try{
+				alert(a + b);
+			}catch(e){
+				alert(e);
+			}
+			alert(e); //ie下可取得e，其它浏览器报错
+		}
+		test({name:'wangling'});
+	</script>
+</head>
+<body>
+
+</body>
+</html>

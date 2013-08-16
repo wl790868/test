@@ -1,0 +1,27 @@
+body{background:#eee;}
+#etao-header-bd,.etao-container{width:998px;margin:0 auto;}
+.etao-container{margin-top:10px;margin-bottom:35px;}
+.etao-pos h1{display:inline;}
+.etao-main{background:#fff;border:1px solid #dedede;float:left;width:696px;padding:10px;}
+.etao-pos{background-color:#f0f6fb;height:18px;margin:0 auto 15px;padding:8px 15px;width:654px;}
+.etao-side{float:right;width:270px;}
+.etao-article{padding:0 25px 20px;}.etao-article .a-title{font-size:22px;color:#101010;}.etao-article .a-title strong{color:#f60;font-style:normal;font-weight:normal;}
+.etao-article .a-sub-title{padding-bottom:10px;margin-bottom:15px;border-bottom:1px solid #e6e6e6;text-align:right;}
+.etao-article .a-time{color:#ccc;}
+.etao-article .a-img{float:right;position:relative;margin-bottom:15px;}.etao-article .a-img .a-img-a{display:inline-block;*zoom:1;}
+.etao-article .a-img .feed-price-wrap{display:block;position:absolute;right:0;top:158px;height:22px;padding-left:54px;padding-right:5px;background:#3b87ee url(http://img04.taobaocdn.com/tps/i4/T1nUVbFahcXXaQf5Dh-48-20.png) no-repeat 5px 1px;text-align:center;color:#fff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;cursor:pointer;word-wrap:break-word;word-break:break-all;}
+.etao-article .a-img .feed-item-price{font-size:14px;}
+.etao-article .a-img .a-act{margin-top:10px;text-align:center;}.etao-article .a-img .a-act a{color:#999;cursor:pointer;margin-right:2px;text-decoration:none;-webkit-transition:color 0.2s linear,background-color 0.3s linear;-moz-transition:color 0.2s linear,background-color 0.3s linear;-o-transition:color 0.2s linear,background-color 0.3s linear;-ms-transition:color 0.2s linear,background-color 0.3s linear;transition:color 0.2s linear,background-color 0.3s linear;}
+.etao-article .a-img .a-act a:hover{color:#f60;}
+.etao-article .a-img .a-act strong{font-weight:normal;}
+.etao-article .a-img .direct{text-align:center;margin-top:10px;}
+.etao-article .a-img .direct-link{background:#f60;border-radius:2px;color:#fff;padding:5px 30px;font-size:14px;letter-spacing:2px;display:inline-block;*zoom:1;}
+.etao-article .a-img .direct-link:hover{opacity:0.8;filter:alpha(opacity=80);}
+.etao-article .a-detail{line-height:1.8;color:#333;font-size:14px;margin-bottom:16px;}
+.etao-article .a-bigimg{text-align:center;margin-top:4px;}
+.etao-hot{background:#fff;border:1px solid #dedede;padding:10px;}.etao-hot .hot-title{font-size:16px;margin-bottom:10px;}
+.etao-hot .hot-item{margin-bottom:10px;}
+.etao-hot .hot-c{width:160px;padding-left:6px;}
+.etao-hot .hot-name{color:#333;font-size:14px;}
+.etao-hot .hot-act{color:#999;text-align:right;margin-top:10px;}.etao-hot .hot-act span{margin-right:5px;}
+.etao-hot .hot-act strong{font-weight:normal;}

@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../../test.css">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+
+		/**
+		 * 简单混排
+		 * @param  {[type]} r [description]
+		 * @param  {[type]} s [description]
+		 * @return {[type]}   [description]
+		 */
+		// function mix(r, s) {
+	 //        for (var i in s) {
+	 //            r[i] = s[i];
+	 //        }
+	 //    }
+
+	    function mix(r, s, ov, wl, deep){
+	    	var key , i;
+
+	    	if(!r || !s){
+	    		return r;
+	    	}
+	    	if(ov === undefined){ //默认覆盖
+	    		ov = true;
+	    	}
+	    	if(wl){ //白名单
+	    		for(i=0;i<wl.length;i++){
+	    			key = wl[i];
+	    			_mix(key, r, s, ov, wl, deep);
+	    		}
+	    	}else{ //所有
+	    		for(key in s){
+	    			_mix(key, r, s, ov, wl, deep);
+		    	}
+	    	}
+	    }
+
+	    //复制一条key数据
+	    function _mix(key, r, s, ov, wl, deep){
+	    	var target = r[key], //目标数据
+	    		src = s[key],
+	    		clone; //源数据
+
+			if (deep && typeof src === 'object') {
+				if(target && typeof target === 'object'){
+					clone = target;
+				}else{
+					if(src instanceof Array){
+						clone = [];
+					}else{
+						clone = {};
+					}
+				}
+				r[key] = clone;
+				mix(clone, src, ov, wl, true);
+			} else if (ov || !target) {
+				r[key] = s[key];
+			}
+
+	    }
+
+
+	    //-------------------------测试-------------
+	    var obj = {
+			a:1,
+			b:2,
+			c:{
+				a:1,
+				b:2,
+				c:{
+					a:1,
+					b:2
+				}
+			}
+		};
+		
+		var obj2 = {
+			c:{
+				d:3,
+				e:4,
+				c:{
+					d:3,
+					e:4
+				}
+			},
+			d:3,
+			e:4
+		};
+
+		var obj3 = {
+			a:obj4,
+			c:1
+		};
+		var obj4 = {
+			b:obj3,
+			d:1
+		};
+
+
+		//默认
+		// mix(obj, obj2);
+		// console.log(obj);
+
+		//不覆盖同名属性
+		// mix(obj, obj2, false);
+		// console.log(obj);
+		
+		//白名单
+		// mix(obj, obj2, undefined, ['c']);
+		// console.log(obj);
+		
+		//深复制
+		// mix(obj, obj2, undefined, undefined, true);
+		// console.log(obj);
+		
+		//特殊测试
+		// mix(obj,{a:undefined,f:undefined},true);
+		// console.log(obj);
+
+		//递归测试 (死循环)
+		// mix(obj3,obj4,false,undefined,true); 
+		// console.log(obj3);
+		
+
+		alert({}.prototype); //undefined
+		alert(Object.prototype); //[object Object]
+		alert(new Object().prototype); //undefined
+		alert(mix.prototype);  //[object Object]
+		alert(new mix().prototype); //undefined
+		//结论：只有构造函数为此属性
+
+	</script>
+</head>
+<body>
+
+
+<div class="comment">
+	<h3 class="title">小结：</h3>
+	<div>
+		<h4></h4>
+		<ul class="des">
+		</ul>
+	</div>
+</div>
+</body>
+</html>

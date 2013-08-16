@@ -1,0 +1,21 @@
+.noresult-keyword {
+padding: 60px 0 35px 0;
+color: #33394b;
+margin: 0;
+}
+.noresult-keyword .noresult-text {
+background-image: url(http://img03.taobaocdn.com/tps/i3/T1KJE0Xd0dXXbe.mPe-40-40.png);
+background-image: -webkit-image-set(url(http://img03.taobaocdn.com/tps/i3/T1KJE0Xd0dXXbe.mPe-40-40.png) 1x,url(hhttp://img04.taobaocdn.com/tps/i4/T1uFA0XfBdXXcKi4fo-80-80.png) 2x);
+background-position: 0 5px;
+background-repeat: no-repeat;
+padding: 0 0 0 60px;
+color: #999;
+line-height: 24px;
+width: 660px;
+margin: auto;
+}
+.noresult-keyword .noresult-text .interjection {
+font-size: 18px;
+color: #33394b;
+margin: 0 0 25px 0;
+}

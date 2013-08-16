@@ -1,0 +1,230 @@
+a {
+color: #666;
+}
+a:hover{
+	color: #ff8400;
+	text-decoration: none;
+}
+#etao-header,
+#etao-header-bd,
+.etao-page-wrap,
+#page.widescreen{
+	width: 980px;
+	margin: 0 auto;
+	min-width: 768px;
+}
+.answer-has{
+	float: left;
+	width: 49%;
+}
+.answer-no{
+	float: right;
+	width: 49%;
+}
+.answer-fir{
+	background: #fffbfa;
+}
+.answer-fir,
+.answer-has,
+.answer-no,
+.answer-product,
+.answer-relate{
+	margin-bottom: 20px;
+}
+.answer-fir h1,
+.answer-has h2,
+.answer-no h2,
+.answer-product h2,
+.answer-relate h2{
+	color: #333;
+	font-weight: 700;
+	font-size: 14px;
+	padding: 5px 10px;
+	background: #eee;
+	margin-bottom: 10px;
+}
+.answer-fir h1{
+	margin: 0;
+}
+.answer-fir .fir-que{
+	padding: 0 60px 10px 10px;
+}
+.fir-que .que-info{
+	margin-bottom: 10px;
+	font-size: 14px;
+	padding-left: 22px;
+}
+.fir-que .que-an{
+	padding-left: 22px;
+}
+.que-an .da{
+	width: 4%;
+	font-size: 14px;
+}
+.que-an ul{
+	width: 96%;
+}
+.que-an ul li{
+	margin-bottom: 8px;
+	font-size: 14px;
+	text-align: left;
+	word-break:break-all;
+	*display: inline;
+	*zoom: 1;
+}
+.question-title em{
+	color: #ff6600;
+}
+.question-title a{
+	color: #333;
+}
+.question-title a:hover{
+	color: #f60;
+}
+.show-ok, .show-wait{
+	background: url("http://img01.taobaocdn.com/tps/i1/T1Q0k5XklfXXazkav4-200-245.png") no-repeat scroll -127px -184px transparent;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-bottom: -3px;
+	margin-right: 4px;
+}
+.show-wait{
+	background-position: -86px -184px;
+}
+.question-info{
+	padding-left: 20px;
+}
+.question-center{
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-bottom: 5px;
+	width: 99%;
+}
+.small-list{
+	padding-left: 10px;
+}
+.small-list li{
+	border-bottom: 1px solid #eee;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+#page .small-list .question-title{
+	margin-bottom: 0px;
+}
+.answer-relate ul{
+	list-style: disc outside square;
+}
+.answer-relate li{
+	display: inline;
+	float: left;
+	overflow: hidden;
+	width: 364px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: Microsoft YaHei;
+	padding-right: 10px;
+}
+.answer-relate li a{
+	text-decoration: underline;
+}
+/*相关产品*/
+.gridview {
+	width: 1000px;
+	font-size: 0;
+	margin-top: -15px;
+	margin-left: -5px;
+}
+.griditem {
+	color: #606060;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	font-size: 12px;
+	line-height: 18px;
+	padding: 10px 0 10px 0;
+	width: 190px;
+	margin-right: 10px;
+	vertical-align: top;
+}
+.griditem .pic-panel {
+	height: 180px;
+	line-height: 180px;
+	overflow: hidden;
+	text-align: center;
+	padding: 5px;
+	width: 180px;
+	font-size: 0;
+}
+.griditem .pic-panel a {
+	display: inline-block;
+}
+.griditem .pic-panel img {
+	vertical-align: middle;
+}
+.griditem h3 {
+	display: block;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+.griditem .title {
+	margin: 10px 0 7px;
+	overflow: hidden;
+	color: #101010;
+	font-weight: normal;
+	text-overflow: clip;
+	padding: 0 5px;
+	white-space: normal;
+}
+.griditem .price-panel {
+height: 23px;
+padding: 0 5px;
+}
+.griditem .price {
+	float: left;
+	margin-right: 5px;
+	font-size: 16px;
+	display: block;
+	height: 23px;
+	color: #101010;
+}
+.griditem .promotion-layer {
+	height: 24px;
+}
+.label-promotion {
+	background: url(http://img03.taobaocdn.com/tps/i3/T17Q_WXopdXXco0Hoi-210-708.png) no-repeat;
+overflow: hidden;
+float: left;
+margin: 2px 3px 2px 0;
+width: 39px;
+height: 14px;
+font-size: 0;
+}
+.griditem .label-youhuigou {
+margin: 0 4px 0 0;
+background-position: 0 -690px;
+width: 50px;
+height: 19px;
+cursor: pointer;
+}
+.griditem .promotion-text {
+float: left;
+color: #101010;
+}
+.griditem .promotion-text:hover, 
+.griditem-hover .promotion-text,
+.griditem a:hover h3 {
+	color: #FF8400;
+	transition: color .3s ease-in;
+	-moz-transition: color .3s ease-in;
+	-webkit-transition: color .3s ease-in;
+	-o-transition: color .3s ease-in;
+	-ms-transition: color .3s ease-in;
+}
+/*相关产品 end*/

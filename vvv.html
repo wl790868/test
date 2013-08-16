@@ -1,0 +1,368 @@
+<style type="text/css">
+        .hotel-bt{
+          border: none;
+          border-radius: 2px;
+          background: #3c86ef;
+          color: #fff;
+          padding: 5px 24px 5px 28px;
+          font-size: 16px;
+        }
+
+        body{
+          background: #ededed;
+        }
+
+        .hotel-content{
+            width: 990px;
+            margin: 0 auto;
+        }
+
+        .hotel-content h2{
+          font-size: 18px;
+        }
+
+        .hotel-title{
+            background: #f6f6f6;
+            height: 37px;
+            line-height: 37px;
+            font-size: 14px;
+        }
+        .hotel-title a{
+          color:#666;
+          margin: 0 20px;
+        }
+        .hotel-title .cur{
+          color: #3879ed;
+        }
+
+        .hotel-body{
+          padding: 10px 0 45px 0;
+        }
+
+        .hotel-side{
+            float: left;
+            width: 320px;
+        }
+        .hotel-side .item{
+          border: 1px solid #dfdfdf;
+          background: #fff;
+          margin-bottom: 20px;
+        }
+        
+        .hotel-partner{
+          padding: 20px 0 30px 20px;
+        }
+        .hotel-partner .logos{
+          width: 274px;
+          padding-top: 25px;
+        }
+        .hotel-partner li{
+          float: left;
+          margin:5px 6px; 
+          width: 124px;
+          *display:inline;
+        }
+
+        .hotel-partner img{
+          width:100%;
+        }
+
+        .hotel-super{
+          padding: 20px 10px 30px 20px;
+          font-size: 14px;
+        }
+        .hotel-super .supers{
+          padding-top: 22px;
+        }
+        .hotel-super .iconfont{
+          color: #c9c9c9;
+          margin-right: 10px;
+          font-size: 14px;
+        }
+        .hotel-super li{
+          margin-bottom: 21px;
+        }
+
+
+
+        .hotel-main{
+          background: #fff;
+          float: right;
+          width: 630px;
+          padding: 20px 10px 55px 10px;
+        }
+        .hotel-city-title{
+          font-size: 14px;
+          margin-bottom: 18px;
+          padding-left: 12px;
+        }
+
+        .hotel-area{
+          margin-bottom: 40px;
+        }
+        .hotel-area h3{
+          background: #f6f6f6;
+          font-size: 18px;
+          padding-left: 13px;
+          height: 36px;
+          line-height: 36px;
+        }
+        .hotel-area .citys{
+          font-size: 14px;
+          padding-top: 21px;
+          padding-left: 13px;
+          line-height: 28px;
+        }
+        .hotel-area .citys span{
+          margin-right: 15px;
+          white-space: nowrap;
+        }
+    </style>
+<!-- 高德地图 -->
+<script type="text/javascript">
+  function initMap() {
+      /*
+        地图操作
+      */
+      var map = new AMapView('mapContent', {
+        viewWidth: 630,
+        viewHeight: 500
+      });
+      map.on('select', function showHotel(evt) {
+        var code = evt.fatherAdcode,
+            pcode = evt.adcode;
+        if(code == '00') return; //暂无数据
+        if(code == '460000') {
+            code = pcode;
+            pcode = '';
+        }
+        //打开指定页面
+        window.open('/hotel_list.htm?frm=hotel_AutoNavi&cc=' + code + '&dc='+ pcode);
+    });
+  }
+  var scriptEl = document.createElement('script');
+  scriptEl.type = 'text/javascript';
+  scriptEl.src = 'http://webapi.amap.com/etao/mapview' + '.js';
+  document.getElementsByTagName('head')[0].appendChild(scriptEl);
+  scriptEl.onload = scriptEl.onreadystatechange = function() {
+    if(!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') {
+      initMap();
+    }
+  };
+</script>
+<script type="text/javascript">  
+    KISSY.config({
+          packages:[
+            {
+              name:'components',
+              tag:'20130427',
+              path:'http://a.tbcdn.cn/apps/e/hotel/130427/',
+              charset: 'utf-8',
+              debug:true
+            }
+          ]
+        });
+        KISSY.ready(function(S){
+            var WAIT_TIME = 3000;
+            var $ = S.all;
+            var citySel;
+            var imgList = $('.img-list'),
+                WIDTH = imgList.width(),
+                timer,
+                curIndex = 1,
+                max = imgList.children().length;
+
+            function start() {
+                if (timer) {
+                    clearInterval(timer);
+                }
+                timer = setInterval(function() {
+                    curIndex++;
+                    if (curIndex > max) {
+                        curIndex = 1;
+                    }
+
+                    imgList.css({
+                        'margin-left': -(curIndex - 1) * WIDTH
+                    });
+                }, WAIT_TIME);
+            }
+
+            imgList.width(WIDTH * max);
+
+            $('#J_img_sub li').on('click', function() {
+                var ths = $(this),
+                    index = +ths.attr('index');
+
+                clearTimeout(timer);
+                imgList.css({
+                    'margin-left': -(index - 1) * WIDTH
+                });
+                curIndex = index;
+                start();
+            });
+
+            start();
+
+
+            // KISSY.use('gallery/city-selector/1.1/domestic,gallery/city-selector/1.1/index', function(S, DomesticData, CitySelector) {
+            //   var tmp = new CitySelector({
+            //     data: DomesticData,
+            //     canProvinceSelect: true,
+            //     node: '#J_city'
+            //   });
+            // });
+
+            
+      S.use('components/city-selector/index,components/city-selector/index.css',function(S, CitySelector){
+              citySel = new CitySelector({
+                el: '#J_city_selector',
+                hotSource: "http://www.taobao.com/go/rgn/trip/chinahotcity_jsonp.php",
+                dataSource: "http://kezhan.trip.taobao.com/citysuggest.do"
+              });
+            });
+            
+            S.use('gallery/calendar/1.0/index',function(S,Calendar){
+              /**
+                 * 酒店日历实例
+                 *
+                 * 入住可选时段：今天起90天
+                 * 离店可选时段：入住时间+28天
+                 */
+                var maxCheckOut = 88;
+                var maxInterval = 28;
+
+                var c = new Calendar({
+                    afterDays       : maxCheckOut,
+                    triggerNode     : '#J_date_from',
+                    finalTriggerNode: '#J_date_to'
+                });
+
+                var maxCheckoutDate = c.get('maxDate');
+                var limit;
+                var DATE = {
+                    stringify: function(v) {
+                        if (!S.isDate(v)) return null;
+                        return v.getFullYear() + '-' + this.filled(v.getMonth() * 1 + 1) + '-' + this.filled(v.getDate());
+                    },
+                    filled: function(v) {
+                        return String(v).replace(/^(\d)$/, '0$1');
+                    },
+                    siblings: function(v, n) {
+                        v = v.match(/\d+/g);
+                        return this.stringify(new Date(v[0], v[1] - 1, v[2] * 1 + n * 1));
+                    }
+                };
+                var today = DATE.stringify(new Date()),
+                tomorrow = DATE.siblings(today, 1);
+
+                $('#J_date_from').val(today);
+                $('#J_date_to').val(tomorrow);
+                c.on('show', function(e) {
+                    switch(e.node.attr('id')) {
+                        case 'J_date_from':
+                            this.set('minDate', new Date);
+                            this.set('afterDays', maxCheckOut);
+                            this.render();
+                            break;
+                        case 'J_date_to':
+                            this.set('minDate', this.get('startDate') || new Date);
+                            this.set('afterDays', Math.min(maxInterval, Calendar.DATE.differ(this.get('minDate'), maxCheckoutDate) + 1));
+                            this.render();
+                            break;
+                    }
+                });
+            });
+          
+            //初始化该分页内容
+            (function(){
+              S.use('dom',function(S, D){
+                var search = window.location.search,
+                    pageNo;
+
+                try{
+                  pageNo = search.match(/p=(\d+)/)[1]
+                }catch(e){
+                }
+
+                pageNo = pageNo || 1;
+                D.css('.J-page ', 'display', 'none');
+                D.css('.J-page-' + pageNo , 'display', 'block');
+              })
+            })();
+
+            //表单验证
+            (function(){
+                $('#J_search_bt').on('click',function(){
+                    var city = $('#J_city_selector')
+                      cityV = city.val(),
+                        error = $('.new-service-error'),
+                        errorStyle = function(){
+                            city.css({
+                                'border-color':'#FF7012'
+                            });
+                            setTimeout(function(){
+                                city.css({
+                                    'border-color':'#DADADA'
+                                });
+                            },300);
+                        };
+
+                    if (!cityV) {
+                        citySel.showErrorMsg('请选择目的城市');
+                        city.getDOMNode().focus();
+                        return false;
+                    }
+                    if (error[0] && '"' + cityV + '"' == error.text()) {
+                        citySel.showErrorMsg('请选择目的城市');
+                        city.getDOMNode().focus();
+                        return false;
+                    }
+                    //金牌令箭
+                    var img = new Image();
+                    img.src = 'http://log.mmstat.com/etaohotel.61380.11110?logtype=2&gokey=&cache=' + Math.ceil(Math.random()*10000000);
+
+                    // $('#J_search_form')[0].submit();
+
+                });
+
+                $('.J_city_name').on('click',function(){
+                    var cur = $(this);
+
+                    $('#J_city_selector').val(cur.text());
+                    $('#J_search_form')[0].submit();
+                });
+            })();
+      });                   
+    </script>
+<div class="hotel-content content main">
+  <div class="hotel-title">
+    <a class="cur" href="/index.htm" target="_blank">国内酒店搜索</a>
+    <a href="/overseas.htm" target="_blank">海外酒店搜索</a>
+    <a href="http://s.etao.com/search?spm=0.0.0.0.zqSGbR&q=%B1%B1%BE%A9+%C9%CF%BA%A3+%BB%FA%C6%B1" target="_blank">国内机票搜索</a>
+  </div>
+  <div class="hotel-body clearfix">
+    <?php
+        $where_from = "hotel_area"
+      ?>
+      <?php include '/home/admin/go/rgn/etao/hotel_left.php' ?>
+      <div class="hotel-main">
+        <p class="hotel-city-title">按照省份和地区查找</p>
+        <div id="mapContent"></div>
+        <cms:repeat title="地区列表" row="50" group="地区列表" name="779185df-962d-4132-85b6-e6e95f7ef1cb">
+          <div class="hotel-area">
+            <cms:text name="title">
+                <h3>$text</h3>
+            </cms:text>
+            <cms:text name="entry" row="100" defaultRow="3">
+              <div class="citys">
+                #foreach ($item in $textList)
+                    <span><a class="J_city_name" href="javascript:void(0);">$item.text</a></span>
+                #end
+              </div>
+            </cms:text>
+          </div>
+        </cms:repeat>
+      </div>
+  </div>
+</div>

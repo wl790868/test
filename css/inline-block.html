@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../test.css">
+</head>
+<body>
+	<div>
+		<style type="text/css">
+			.dib{
+				display: inline-block;
+				*display: inline;
+				*zoom:1;
+			}
+			.dib-wrap{
+				vertical-align: middle;
+				font-size: 0;
+			}
+			.dib-wrap .dib{
+				font-size: 12px;
+				vertical-align: middle;
+			}
+			.item{
+				width: 400px;
+				height: 100px;
+				line-height: 100px;
+				background: #999;
+				text-align: center;
+			}
+			.city-input{
+				width: 150px;
+				height: 80px;
+				background: #ccffcc;
+				line-height: 80px;
+				*zoom:1;
+				/*overflow: hidden;*/
+			}
+			.city-input input{
+				*zoom:1;
+				height: 25px;
+				width: 150px;
+
+				border:0 none;
+				margin:0;
+				padding: 0;
+			}
+			.city-input .input{
+				*zoom:1;
+				height: 25px;
+				width: 150px;
+
+				background: #ccc;
+				border:0 none;
+				margin:0;
+				padding: 0;
+			}
+
+			.custom{
+				margin-top: 10px;
+				white-space: nowrap;
+				*zoom: 1;
+			}
+			.sel-custom .custom-bt{
+				padding: 0 2px;
+			}
+			.custom .txt{
+				padding: 5px 0;
+			}
+			.custom input{
+				vertical-align: middle;
+			}
+		</style>
+		<h3>inline-block</h3>
+		<div class="item dib-wrap">
+			<label class="dib">入  住:</label>
+			<div class="city-input dib">
+				<div class="input dib"></div>
+				<!-- <input class="dib"/> -->
+			</div>
+			<span class="dib">热门城市</span>
+		</div>
+		<div class="custom">
+			<span>自定义</span><input class="txt" type="text"/><span>到</span><input class="txt" type="text"/><input type="button" value="确定" />
+		</div>
+	</div>
+	
+	<div class="comment">
+		<h3 class="title">小结：</h3>
+		<div>
+			<h4>input border:none 在ie6,7中不生效</h4>
+			<ul class="des">
+				<li><pre>解决方法：写成 border:0 none; 即可</pre></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

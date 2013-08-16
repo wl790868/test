@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="http://a.tbcdn.cn/apps/e/brix/2.0/brix-min.css">
+	<link rel="stylesheet" href="http://a.tbcdn.cn/apps/e/brix/2.0/gallery/dropdown/index.css">
+    <link rel="stylesheet" href="http://a.tbcdn.cn/apps/e/brix/2.0/gallery/pagination/index.css">
+	<script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed.js"></script>
+	<script src="http://a.tbcdn.cn/apps/e/brix/2.0/brix-min.js" bx-config="{autoConfig:true, autoPagelet:true}"></script>
+	<script type="text/javascript">
+	KISSY.config({
+		// combine:true,
+		// debug: false
+		packages:[{
+			name:'p',
+			path:'./'
+		}]
+	});
+
+	Brix.config({
+	});
+
+	// KISSY.add('test', function(S){
+	// 	alert('hello');
+	// 	function test(){
+	// 	}
+	// 	test.log = function(){
+	// 		console.log('---------------测试ing');
+	// 	}
+	// 	return test;
+	// });
+	// KISSY.use('test',function(S , test){
+	// 	test.log();
+	// });
+	
+	KISSY.ready(function(S){
+		// S.use('brix/gallery/pagination/index', function(S, P){ //线上
+		S.use('p/index', function(S, P){ //本地
+			console.log('-----------------------------------aaaaaaaaaaaa');
+			new P({
+				'el': '#J_pagination',
+				'sizeChange':true,
+				'jump':true,
+				'goTo':false,
+				'count':1000,
+				'size': 5
+			}).render();
+		});
+
+
+	});
+	</script>
+</head>
+<body>
+	<h2 class="h2">简易模式</h2>
+    <div bx-name="pagination" class="pagination" bx-config="{simplify:true,pageName:'pagenum',params:{xx:[45,'er']}}">
+    </div>
+
+    <h2 class="h2">默认模式</h2>
+    <div bx-name="pagination" class="pagination" bx-config="{sizeChange:true,jump:true,goTo:false,count:50,size:9}">
+    </div>
+
+    <h2 class="h2">js渲染模式</h2>
+    <div id="J_pagination" class="pagination"></div>
+</body>
+</html>

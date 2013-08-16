@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>css transition</title>
+	<style type="text/css">
+	.item{
+		width: 200px;
+		height: 200px;
+		background: #ddd;
+		border-radius: 5px;
+		text-align: center;
+		line-height: 200px;
+		position: absolute;
+		left: 200px;
+		top: 100px;
+
+		transition:All 1s ease;
+		/*-webkit-transition:All 1s ease;
+		-moz-transition:All 1s ease;
+		-o-transition:All 1s ease;*/
+	}
+	.item:hover{
+		transform: rotate(360deg) scale(0.6) skew(1deg);
+		-webkit-transform: rotate(360deg) scale(0.6);
+	}
+	.item:active{
+		transform: rotate(0deg) scale(1.5) skew(1deg);
+		-webkit-transform: rotate(0deg) scale(1.5);
+	}
+	.item-hover{
+		transform: rotate(360deg) scale(0.6) skew(1deg);
+		-webkit-transform: rotate(360deg) scale(0.6);
+	}
+	</style>
+
+</head>
+<body>
+<div id="J_item" class="item">
+	<div class="des">你好啊！</div>
+</div>
+<input id="start" type="button" value="开始动画"/>
+
+<script type="text/javascript">
+	var start = document.getElementById('start');
+
+	start.onclick = function(){
+		document.getElementById('J_item').setAttribute('class', 'item item-hover');
+	}
+	</script>
+</body>
+</html>

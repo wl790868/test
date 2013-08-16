@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../test.css">
+	<style type="text/css">
+	body{
+		width: 500px;
+	}
+	p{
+		margin: 0; /*去掉p标签margin*/
+	}
+	.item{
+		background: #ccff00;
+		display: inline;
+		float: left;
+		margin-right: 50px;
+		margin-left: 50px;
+		width: 150px;
+		height: 150px;
+	}
+	.testp{
+		background: #ccc;
+		float: left;
+		margin-left: 20px;
+		width: 100px;
+		height: 100px;
+	}
+	
+	</style>
+</head>
+<body>
+<p class="testp"></p>
+<div class="item">
+</div>
+<p class="txt">中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中中右楞中</p>
+
+<div class="comment">
+	<h3 class="title">小结：</h3>
+	<div>
+		<h4>ie6双margin出现条件：</h4>
+		<ol class="des">
+			<li>当浮动元素的浮动方向和浮动边界的方向一致时才会出现</li>
+			<li>同一行如果有多个浮动元素，第一个浮动元素会出现这个双边距bug，其它的浮动元素则不会</li>
+		</ol>
+		<h4>解决方法</h4>
+		<ul class="des">
+			<li>display:inline</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

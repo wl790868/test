@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../../test.css">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+		(function() {
+			var obj = Object.create({
+				a: 1,
+				b: 1
+			}, {
+				c:{
+					value:5
+				}
+			});
+
+			console.log(obj);
+			console.log(obj.c);
+		})();
+
+		/**
+		 * 
+		 * @param  {[type]} proto       [description]
+		 * @param  {[type]} constructor [description]
+		 * @return {[type]}             [description]
+		 */
+		function createObject(proto, constructor) {
+			function F(){
+			}
+
+			F.prototype = proto;
+
+			F.prototype.constructor = constructor;
+
+			return new F();
+
+		}
+
+		function Empty() {}
+		function createObject2(proto, constructor) {
+			var newProto,
+				ObjectCreate = Object.create;
+			if (ObjectCreate) {
+				newProto = ObjectCreate(proto);
+			} else {
+				Empty.prototype = proto;
+				newProto = new Empty();
+			}
+			newProto.constructor = constructor;
+			return newProto;
+		}
+
+		(function() {
+			function Test() {
+				this.name = 'wangling';
+			}
+			var o = createObject2({
+				getName: function() {
+					return this.name
+				}
+			}, Test);
+
+			console.log(o instanceof Test);
+			console.log(o.getName());
+
+		})();
+	</script>
+</head>
+<body>
+
+
+<div class="comment">
+	<h3 class="title">小结：</h3>
+	<div>
+		<h4></h4>
+		<ul class="des">
+		</ul>
+	</div>
+</div>
+</body>
+</html>

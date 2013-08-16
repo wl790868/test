@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	.container{
+		width: 800px;
+		height: 1500px;
+		background: #ccc;
+		margin: 0 auto;
+	}
+	.title{
+		height: 50px;
+		background: #ccff00;
+		/*position: relative;*/
+	}
+	.title-fix{
+		position: fixed;
+		top: 0;
+		z-index: 5;
+		width: 800px;
+	}
+	.item{
+		height: 200px;
+		margin-bottom: 15px;
+		background: green;
+	}
+
+	/* 修正IE6振动bug */
+	*html,*html body{
+		background-image:url(about:blank);background-attachment:fixed;
+	}
+	*html .title-fix{
+		position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));
+	}
+	</style>
+	<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+	<script type="text/javascript">
+	KISSY.ready(function(S){
+		var fixPanel = S.one('#J_fix_panel');
+		var start = parseInt(fixPanel.offset().top, 10);
+
+		S.Event.on(window, 'scroll', function() {
+			var scrollTop = S.DOM.scrollTop();
+
+			if (scrollTop >= start) {
+				fixPanel.addClass('title-fix');
+			}else{
+				fixPanel.removeClass('title-fix');
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div id="J_fix_panel" class="title"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+	// alert(typeof null); //object
+	// alert(typeof window); //object
+
+	// alert(null instanceof Object); //false
+	// alert(window instanceof Object); //true
+	
+	function createObject(pro, constr){
+		var obj;
+		var create = Object.create;
+		var F = constr;
+
+		// if(create){
+		// 	obj = create(pro);
+		// }else{
+			F.prototype = pro;
+			obj = new F();
+		// }
+
+		return obj;
+	}
+
+	function Constr(){
+		this.name = 'wangling';
+	}
+	var Pro = {
+		getName:function(){
+			return this.name;
+		}
+	};
+
+	var ins = createObject(Pro, Constr);
+
+	// alert(ins instanceof Constr); //true
+	// alert(ins.getName());
+
+	//测试 实例修改原型
+	var obj = function(){
+	};
+	obj.prototype.a="123";
+	new obj().a = 456; //改不了
+	// alert(new obj().a);
+
+	//测试 __ptoto__
+	//小结：任何一个对象都有一个prototype的属性（直接访问prototype可能访问不到），
+	//在js中可以把它记为：__proto__
+	var a = {
+		x:1,
+		calculate:function(){
+			return this.x+this.y;
+		}
+	};
+	var b={
+		y:2,
+		__proto__:a
+	};
+	alert(b.calculate()); //3
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

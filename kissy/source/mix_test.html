@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../../test.css">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.3.0/kissy-min.js"></script>
+
+	<script type="text/javascript">
+		var obj = {
+			a:1,
+			b:2,
+			c:{
+				a:1,
+				b:2
+			},
+			g:obj2
+		};
+		
+		var obj2 = {
+			c:{
+				d:3,
+				e:4
+			},
+			d:3,
+			e:4,
+			f:obj
+		};
+
+		(function(S){
+			//默认
+			// S.mix(obj, obj2);
+			// console.log(obj);
+
+			//不覆盖同名属性
+			// S.mix(obj, obj2, false);
+			// console.log(obj);
+			
+			//白名单
+			// S.mix(obj, obj2, true, ['c']);
+			// console.log(obj);
+			
+			//深复制
+			// S.mix(obj, obj2, undefined, undefined, true);
+			// console.log(obj);
+
+			//特殊测试 （貌似是bug）
+			// S.mix(obj,{a:undefined,f:undefined},true);
+			// console.log(obj);
+			
+			//递归测试
+			// S.mix(obj,obj2,undefined,undefined,true); 
+			// console.log(obj);
+			
+			
+		})(KISSY);
+
+
+	</script>
+</head>
+<body>
+
+
+<div class="comment">
+	<h3 class="title">小结：</h3>
+	<div>
+		<h4></h4>
+		<ul class="des">
+		</ul>
+	</div>
+</div>
+</body>
+</html>
