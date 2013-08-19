@@ -1,0 +1,56 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	#sidebar{
+		width: 150px;
+		height: 150px;
+	}
+	</style>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/underscore.js"></script>
+	<script type="text/javascript" src="lib/backbone.js"></script>
+	<script type="text/javascript">
+
+		//事件测试
+		(function(){
+			var obj = {};
+
+			_.extend(obj, Backbone.Events);
+			obj.bind('alert', function(msg){
+				alert(msg);
+			})
+			obj.trigger('alert', 'Hello, backbone!');
+			
+		});
+
+		//模型测试
+		(function(){
+			$(document).ready(function(){
+				var Sidebar = Backbone.Model.extend({
+				  promptColor: function() {
+				    var cssColor = prompt("请输入一个CSS颜色值：");
+				    this.set({color: cssColor});
+				  }
+				});
+
+				var sidebar = new Sidebar;
+
+				sidebar.bind('change:color', function(model, color) {
+				  $('#sidebar').css({background: color});
+				});
+
+				sidebar.set({color: 'green'});
+
+				sidebar.promptColor();
+			});
+		})();
+		
+
+	</script>
+</head>
+<body>
+	<div id="sidebar"></div>
+</body>
+</html>
